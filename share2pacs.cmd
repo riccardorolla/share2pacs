@@ -13,10 +13,11 @@ echo.
 echo %scriptname% - environment version %env.version%
 echo.
 
-if not exist "%temp.dir%" mkdir "%temp.dir%"
+
 FOR /f "tokens=1,2* delims==" %%a IN (%scriptname%.properties) DO SET %%a=%%b
+if not exist "%temp.dir%" mkdir "%temp.dir%"
 echo %debug%
-for /R %source.dir% %%a in (*.*) do call :extract.send "%%a" %%~na%%~xa
+for /R "%source.dir%" %%a in (*.*) do call :extract.send "%%a" %%~na%%~xa
 goto end 
 
 
